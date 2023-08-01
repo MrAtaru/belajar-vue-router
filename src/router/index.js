@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-// Import Component2 Kalian
+
 
 import Home from "/src/views/Home.vue";
 import About from "/src/views/About.vue";
