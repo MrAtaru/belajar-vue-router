@@ -1,30 +1,35 @@
 <template>
-  <h1>Produk</h1>
-  <div class="">
-    <div v-for="produk in state" :keys="produk.id" class="card">
-      <router-link class="container" :to="{ name: 'DetailProduk', params: { id_produk: produk.id } }">
-        <h4>{{ produk.nama }}</h4>
+  <h1>Kategori</h1>
+  <div class="flex-container">
+    <div v-for="kategori in state" :keys="kategori.id" class="card">
+      <img :src="getImgSrc(kategori.img)" alt="#" />
+      <router-link class="container" :to="{ name: 'DetailKategori', params: { id_kategori: kategori.id } }">
+        <h4>{{ kategori.nama }}</h4>
       </router-link>
     </div>
   </div>
-      <router-link :to="{ name: 'Kategori' }">Kembali</router-link>
-
 </template>
 
 <script>
 import { onMounted, reactive } from "vue";
-import { produk } from "../assets/Produk";
+import { kategori } from "../assets/Kategori";
+
 
 export default {
   setup(props, context) {
-    const state = reactive(produk["produk"]);
+    const state = reactive(kategori["kategori"]);
+
+    const getImgSrc = (imgFileName) => {
+      return "../src/assets/img/" + imgFileName + "";
+    };
 
     onMounted(() => {
-      context.emit("id-menu", 4);
+      context.emit("id-menu", 5);
     });
 
     return {
       state,
+      getImgSrc
     };
   },
 };

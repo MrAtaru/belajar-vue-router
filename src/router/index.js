@@ -1,11 +1,14 @@
 import { createWebHistory, createRouter } from "vue-router";
 
+import Home from "../views/Home.vue";
+import About from "../views/About.vue";
+import Contact from "../views/Contact.vue";
+import Produk from "../views/Produk.vue";
+import DetailKategori from '../components/DetailKategori.vue';
+import DetailProduk from '../components/DetailProduk.vue';
+import kategori from '../views/Kategori.vue';
+import NotFound from '../components/NotFound.vue';
 
-import Home from "/src/views/Home.vue";
-import About from "/src/views/About.vue";
-import Contact from "/src/views/Contact.vue";
-import Produk from "/src/views/Produk.vue";
-import Detail from '/src/components/Detail.vue';
 
 const routes = [
   {
@@ -29,12 +32,26 @@ const routes = [
     component: Produk,
   },
   {
-    path: "/detail/:id_produk",
-    name: "Detail",
-    component: Detail,
+    path: "/kategori",
+    name: "Kategori",
+    component: kategori,
+  },
+  {
+    path: "/produk/:id_produk",
+    name: "DetailProduk",
+    component: DetailProduk,
     props: true,
   },
+  {
+    path: "/detail/:id_kategori",
+    name: "DetailKategori",
+    component: DetailKategori,
+    props: true,
+  },
+  
 ];
+
+
 
 const router = createRouter({
   history: createWebHistory(),
