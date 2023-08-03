@@ -8,6 +8,9 @@ import DetailKategori from '../components/DetailKategori.vue';
 import DetailProduk from '../components/DetailProduk.vue';
 import kategori from '../views/Kategori.vue';
 import NotFound from '../components/NotFound.vue';
+import Login from "../views/Login.vue";
+import { users } from "../assets/user";
+
 
 
 const routes = [
@@ -30,6 +33,14 @@ const routes = [
     path: "/produk",
     name: "Produk",
     component: Produk,
+    beforeEnter: (to, from, next) => {
+      const loggedInUser = true;
+      if (loggedInUser) {
+        next();
+      } else {
+        next("/login");
+      }
+    },
   },
   {
     path: "/kategori",
@@ -37,17 +48,23 @@ const routes = [
     component: kategori,
   },
   {
-    path: "/produk/:id_produk",
+    path: "/detail/:id_produk",
     name: "DetailProduk",
     component: DetailProduk,
     props: true,
   },
   {
-    path: "/detail/:id_kategori",
+    path: "/kategori/:id_kategori",
     name: "DetailKategori",
     component: DetailKategori,
     props: true,
   },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+    props: true,
+  }
   
 ];
 

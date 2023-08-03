@@ -1,13 +1,19 @@
 <template>
   <div>
-    <h1>Nama Kategori : {{ detailkategori }}</h1>
-    <div class="flex-container">
-      <div v-for="produk in filterProduk" :keys="produk.id" class="card">
-        <img :src="getImgSrc(produk.img)" alt="#">
-        <router-link class="container" :to="{ name: 'DetailProduk', params: { id_produk: produk.id } }">
-          <h4>{{ produk.nama }}</h4>
-        </router-link>
+    <div v-if="detailkategori">
+      <h1>Nama Kategori : {{ detailkategori }}</h1>
+      <div class="flex-container">
+        <div v-for="produk in filterProduk" :keys="produk.id" class="card">
+          <img :src="getImgSrc(produk.img)" alt="#" />
+          <router-link class="container" :to="{ name: 'DetailProduk', params: { id_produk: produk.id } }">
+            <h4>{{ produk.nama }}</h4>
+          </router-link>
+        </div>
       </div>
+    </div>
+    <div v-else>
+      <h1>404 Not Found</h1>
+      <p>Halaman yang Anda cari tidak ditemukan.</p>
     </div>
     <router-link :to="{ name: 'Kategori' }">Kembali</router-link>
   </div>
@@ -30,20 +36,19 @@ export default {
     });
 
     const getImgSrc = (imgFileName) => {
-      return '../src/assets/img/' + imgFileName + '';
+      return "../src/assets/img/" + imgFileName + "";
     };
 
     return {
       detailkategori,
       filterProduk,
-      getImgSrc
+      getImgSrc,
     };
   },
 };
 </script>
 
 <style scoped>
-
 h4 {
   text-align: center;
   font-size: larger;

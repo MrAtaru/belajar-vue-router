@@ -9,6 +9,7 @@
     <div v-else>
       <h1>404 Not Found</h1>
       <p>Halaman yang Anda cari tidak ditemukan.</p>
+      <router-link :to="{ name: 'Produk' }">Kembali</router-link>
     </div>
   </div>
 </template>
